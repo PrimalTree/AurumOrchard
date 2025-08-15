@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/app/contracts/contracts/Goldstem.sol": {
-      "lastModificationDate": 1755155338757,
-      "contentHash": "e6e4c1b79e6c706b5c94b712700b4a1e",
+    "C:\\Users\\12524\\Primal Tree AI\\AurumOrchard\\contracts\\contracts\\Goldstem.sol": {
+      "lastModificationDate": 1755233614171,
+      "contentHash": "5965528edf47d69c3941c49881025bae",
       "sourceName": "contracts/Goldstem.sol",
       "solcConfig": {
         "version": "0.8.24",
@@ -29,9 +29,7 @@
           }
         }
       },
-      "imports": [
-        "hardhat/console.sol"
-      ],
+      "imports": [],
       "versionPragmas": [
         "^0.8.24"
       ],
@@ -39,8 +37,8 @@
         "Goldstem"
       ]
     },
-    "/app/contracts/node_modules/hardhat/console.sol": {
-      "lastModificationDate": 1755155353691,
+    "C:\\Users\\12524\\Primal Tree AI\\AurumOrchard\\contracts\\node_modules\\hardhat\\console.sol": {
+      "lastModificationDate": 1755231885600,
       "contentHash": "681c532e816169606d13a5fe8b475074",
       "sourceName": "hardhat/console.sol",
       "solcConfig": {

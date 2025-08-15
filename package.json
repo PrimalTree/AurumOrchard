@@ -1,0 +1,13 @@
+{
+  "name": "wallet-generator",
+  "version": "1.0.0",
+  "description": "Simple cryptocurrency wallet generator",
+  "main": "wallet_generator.js",
+  "scripts": {
+    "start": "node wallet_generator.js"
+  },
+  "dependencies": {
+    "ethers": "^6.8.1",
+    "hardhat": "^3.0.0"
+  }
+}
