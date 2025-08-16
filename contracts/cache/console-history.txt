@@ -1,0 +1,4 @@
+npx hardhat run check-balance.js --network arbitrumMainnet
+const balance = await ethers.provider.getBalance("0xFf6AE51D0a2df0F548bac678a5d0756d7649BA92")
+ethers.utils.formatEther(balance)
+const balance = await ethers.provider.getBalance("0xFf6AE51D0a2df0F548bac678a5d0756d7649BA92")
