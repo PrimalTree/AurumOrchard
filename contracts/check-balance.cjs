@@ -19,7 +19,7 @@ async function main() {
       console.log("✅ Sufficient balance for deployment");
     } else {
       console.log("❌ Insufficient balance for deployment");
-      console.log("You need at least 0.001 ETH on Arbitrum One");
+      console.log("You need at least 0.000011 ETH on Arbitrum One");
     }
     
   } catch (error) {
