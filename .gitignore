@@ -1,0 +1,21 @@
+# Wallet files
+*_wallet.json
+
+# Environment files
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Hardhat
+cache/
+artifacts/

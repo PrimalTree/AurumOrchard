@@ -58,39 +58,19 @@ def seed_to_root(w3, amount_eth, seed_account, root_account):
     }
     send_tx(w3, tx, seed_account)
 
-def split_via_goldstem(w3, amount_eth, root_account, goldstem_contract, use_route_and_split=False):
+def split_via_goldstem(w3, amount_eth, root_account, goldstem_contract):
     """
-    Sends ETH to Goldstem to be split.
-    - If use_route_and_split is True, it attempts to use the routeAndSplit function.
-    - Otherwise, it sends ETH directly to the contract, triggering the receive() fallback.
+    Sends ETH to Goldstem to be split by triggering the receive() fallback.
     """
     print(f"Splitting {amount_eth} ETH via Goldstem...")
-
-    if use_route_and_split:
-        if hasattr(goldstem_contract.functions, 'routeAndSplit'):
-            print("  Using routeAndSplit()...")
-            tx = goldstem_contract.functions.routeAndSplit().build_transaction({
-                'from': root_account.address,
-                'value': w3.to_wei(amount_eth, 'ether'),
-                'chainId': w3.eth.chain_id,
-            })
-            send_tx(w3, tx, root_account)
-            return True
-        else:
-            print("  routeAndSplit() not found in contract ABI. Skipping.")
-            return False
-    else:
-        # The contract's receive() function handles the splitting logic.
-        # There is no separate split() function to call after funding.
-        print("  Sending ETH directly to Goldstem for splitting via receive()...")
-        tx = {
-            'to': goldstem_contract.address,
-            'value': w3.to_wei(amount_eth, 'ether'),
-            'from': root_account.address,
-            'chainId': w3.eth.chain_id,
-        }
-        send_tx(w3, tx, root_account)
-        return True
+    print("  Sending ETH directly to Goldstem for splitting via receive()...")
+    tx = {
+        'to': goldstem_contract.address,
+        'value': w3.to_wei(amount_eth, 'ether'),
+        'from': root_account.address,
+        'chainId': w3.eth.chain_id,
+    }
+    send_tx(w3, tx, root_account)
 
 def flashloan_and_arb():
     """Placeholder for flashloan arbitrage."""
@@ -154,14 +134,7 @@ def main():
     # --- Dust Test ---
     print("\n--- Dust Test ---")
     seed_to_root(w3, 0.00003, seed_account, root_account)
-
-    try:
-        if not split_via_goldstem(w3, 0.00002, root_account, goldstem_contract, use_route_and_split=True):
-            print("Fallback: routeAndSplit not found, using direct send.")
-            split_via_goldstem(w3, 0.00002, root_account, goldstem_contract, use_route_and_split=False)
-    except Exception as e:
-        print(f"Fallback: routeAndSplit failed with error: {e}, using direct send.")
-        split_via_goldstem(w3, 0.00002, root_account, goldstem_contract, use_route_and_split=False)
+    split_via_goldstem(w3, 0.00002, root_account, goldstem_contract)
 
     # --- Flashloan Placeholder ---
     print("\n--- Flashloan ---")
