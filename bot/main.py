@@ -127,12 +127,8 @@ def main():
         raise EnvironmentError("GOLDSTEM_ADDRESS environment variable not set.")
 
     goldstem_abi = load_contract_abi()
-
-
     if not goldstem_abi:
         raise FileNotFoundError(f"Goldstem ABI not found at {ABI_PATH}")
-
-
     goldstem_contract = w3.eth.contract(address=GOLDSTEM_ADDRESS, abi=goldstem_abi)
     print(f"Goldstem Contract Address: {goldstem_contract.address}")
 
@@ -159,7 +155,6 @@ def main():
     print("\n--- Dust Test ---")
     seed_to_root(w3, 0.00003, seed_account, root_account)
 
-    # Try with routeAndSplit, fallback if it fails or is not available
     try:
         if not split_via_goldstem(w3, 0.00002, root_account, goldstem_contract, use_route_and_split=True):
             print("Fallback: routeAndSplit not found, using direct send.")
