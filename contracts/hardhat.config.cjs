@@ -6,12 +6,12 @@ module.exports = {
   solidity: "0.8.24",
   networks: {
     arbitrumMainnet: {
-      url: process.env.RPC_URL,
+      url: process.env.ARBITRUM_MAINNET_RPC_URL || "https://arb1.arbitrum.io/rpc",
       accounts: process.env.SEED_KEY ? [process.env.SEED_KEY] : [],
       chainId: 42161,
     },
     arbitrumSepolia: {
-      url: "https://sepolia-rollup.arbitrum.io/rpc",
+      url: process.env.ARBITRUM_SEPOLIA_RPC_URL || "https://sepolia-rollup.arbitrum.io/rpc",
       accounts: process.env.SEED_KEY ? [process.env.SEED_KEY] : [],
       chainId: 421614,
     },
