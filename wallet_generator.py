@@ -1,3 +1,4 @@
+import json
 from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 
 def generate_wallet():
@@ -23,14 +24,19 @@ def generate_wallet():
     private_key = bip44_acc_ctx.PrivateKey().Raw().ToHex()
     address = bip44_acc_ctx.PublicKey().ToAddress()
 
-    # Print wallet details
-    print(f"\n--- {wallet_name} Wallet Details ---")
-    print(f"Address: {address}")
-    print(f"Private Key: {private_key}")
-    print(f"Recovery Phrase (Mnemonic): {mnemonic}")
-    print("------------------------------------")
-    print("\nIMPORTANT: Store your private key and recovery phrase in a secure location. ")
-    print("Anyone with access to them can control your funds.")
+    # Save wallet details to a file
+    wallet_data = {
+        "wallet_name": wallet_name,
+        "address": address,
+        "private_key": private_key,
+        "mnemonic": str(mnemonic)
+    }
+    file_name = f"{wallet_name}_wallet.json"
+    with open(file_name, 'w') as f:
+        json.dump(wallet_data, f, indent=4)
+
+    print(f"\nWallet details saved to {file_name}")
+    print("\nIMPORTANT: Secure this file and do not share your private key or recovery phrase with anyone.")
 
 if __name__ == "__main__":
     generate_wallet()
