@@ -4,5 +4,11 @@
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "hardhat": "^2.22.5"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@aave/core-v3": "^1.19.3",
+    "@bgd-labs/aave-address-book": "^4.27.0",
+    "@uniswap/v3-core": "^1.0.1",
+    "@uniswap/v3-periphery": "^1.4.4"
+  }
 }
